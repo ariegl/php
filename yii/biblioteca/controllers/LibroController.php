@@ -9,6 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
+use yii\data\Pagination;
 use yii\web\UploadedFile;
 
 /**
@@ -125,6 +126,21 @@ class LibroController extends Controller
 
         return $this->redirect(['index']);
     }
+
+
+    public function actionLista(){
+        $model = Libro::find();
+
+        $paginacion = new Pagination([
+            'defaultPageSize'=> 3,
+            'totalCount'=> $model->count(),
+        ]);
+
+        $libros = $model->orderBy('id')->offset($paginacion->offset)->limit($paginacion->limit)->all();
+
+        return $this->render('lista',['libros'=>$libros,'paginacion'=>$paginacion]);
+    }
+
 
     /**
      * Finds the Libro model based on its primary key value.
