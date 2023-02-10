@@ -1,0 +1,14 @@
+<?php
+
+/*
+    CON LOS METODOS Y PROPIEDADES DE TIPO STATIC PODEMOS ACCEDER A ELLOS SIN NECESIDAD DE
+    INSTANCIAR UN OBJETO PARA ELLO EN PHP UTILIZAMOS EL SIMBOLO :: MIENTRAS QUE PARA ACCEDER
+    A UN METODO O PROPIEDAD DE UN OBJETO UTILIZAMOS EL SIMBOLO ->
+*/
+
+require("./class/animal.php");
+
+echo strtoUpper(Animal::$farmName);
+echo nl2br(Animal::DogGreeting());
+echo nl2br(Animal::CatGreeting());
+?>
